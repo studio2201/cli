@@ -1,0 +1,22 @@
+[package]
+name = "studio2201"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Unified CLI and toolchain manager for studio2201"
+authors = ["studio2201"]
+license = "Apache-2.0"
+
+[[bin]]
+name = "studio2201"
+path = "src/main.rs"
+
+[lib]
+name = "studio2201_cli"
+path = "src/lib.rs"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
