@@ -4,6 +4,11 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.5] — 2026-09-19
+
+### Added
+- Standardized Option 2 Detailed Governance Scorecard across `AGENTS.md` and repository READMEs.
+
 ## [0.1.4] — 2026-09-19
 
 ### Fixed

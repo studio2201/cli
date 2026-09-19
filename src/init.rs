@@ -50,15 +50,11 @@ Embed this clean badge into your `README.md` header alongside version and licens
 [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
 ```
 
-### Option 2 (Detailed): Collapsible Governance Scorecard
-Embed this expandable scorecard for comprehensive per-tool verification:
+### Option 2 (Detailed): Collapsible Governance Scorecard (Standard)
+Embed this standardized expandable scorecard in your README for comprehensive per-tool verification:
 ```markdown
 <details>
-<summary>
-  <a href="https://studio2201.com/agents#badges">
-    <img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite">
-  </a>
-</summary>
+<summary><a href="https://studio2201.com/agents#badges"><img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite"></a> <b>Detailed Governance Scorecard</b></summary>
 
 | Tool | Focus | Status | Badge |
 | :--- | :--- | :---: | :---: |
