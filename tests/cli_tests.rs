@@ -1,6 +1,7 @@
 //! tests/cli_tests.rs — Comprehensive unit and integration tests for studio2201 CLI
 use std::fs;
 use std::path::PathBuf;
+use std::process::Command;
 use studio2201_cli::init;
 use studio2201_cli::toolchain::{self, ALL_TOOLS};
 use studio2201_cli::xdg;
@@ -93,5 +94,59 @@ fn test_boneyard_graceful_skip() {
     assert_eq!(res.unwrap(), 0);
 
     let _ = fs::remove_dir_all(&tmp);
+}
+
+#[test]
+fn test_invalid_argument_exit_code_2() {
+    let bin = env!("CARGO_BIN_EXE_studio2201");
+    let test_cases: &[&[&str]] = &[
+        &["--invalid-arg"],
+        &["-z"],
+        &["--unknown-flag-123"],
+        &["nonexistent-command"],
+        &["install", "--unknown-flag"],
+        &["check", "--invalid-flag"],
+    ];
+
+    for args in test_cases {
+        let output = Command::new(bin)
+            .args(*args)
+            .output()
+            .unwrap_or_else(|e| panic!("failed to execute studio2201 binary: {}", e));
+
+        assert_eq!(
+            output.status.code(),
+            Some(2),
+            "expected exit code 2 for args {:?}, got {:?}",
+            args,
+            output.status.code()
+        );
+        assert!(
+            !output.stderr.is_empty(),
+            "expected non-empty stderr for args {:?}",
+            args
+        );
+    }
+}
+
+#[test]
+fn test_cli_parsing_errors_and_exit_code_2_cases() {
+    let to_args = |slice: &[&str]| -> Vec<String> {
+        slice.iter().map(|s| s.to_string()).collect()
+    };
+
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["--invalid-arg"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["-z"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["nonexistent-command"])).is_err());
+
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["install", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["remove", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["upgrade", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["list", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["check", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["init", "--unknown-flag"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["install", "--dest"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["check", "--path"])).is_err());
+    assert!(studio2201_cli::cli::parse_from(&to_args(&["check", "--tools"])).is_err());
 }
 
