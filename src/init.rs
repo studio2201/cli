@@ -49,15 +49,35 @@ Before submitting code changes, pull requests, or commits:
 
 ## Repository README Verification Badges
 
-### Primary Anchor Badge & Executive Assurance Scorecard
-Embed the anchor badge and 5 executive metric badges in your `README.md`:
+### Centered Security & Governance Scorecard (Recommended)
+Embed this clean, centered scorecard table in your `README.md` to prevent badge clutter:
+
 ```markdown
-[![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)
-[![snip](https://img.shields.io/badge/snip-0%20secrets-2f6f5e)](https://studio2201.com/snip)
-[![vigil](https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e)](https://studio2201.com/vigil)
-[![aegis](https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e)](https://studio2201.com/aegis)
-[![proven](https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e)](https://studio2201.com/proven)
-[![boneyard](https://img.shields.io/badge/boneyard-maintained-2f6f5e)](https://studio2201.com/boneyard)
+<div align="center">
+
+| Security Pillar | Verification Badge |
+| :--- | :---: |
+| **Platform Standard** | [![secured by studio2201][b-studio]][u-home] |
+| **Credential Defense** | [![snip][b-snip]][u-snip] |
+| **Supply Chain Surface** | [![vigil][b-vigil]][u-vigil] |
+| **Post-Quantum Cryptography** | [![aegis][b-aegis]][u-aegis] |
+| **Build Provenance & SLSA** | [![proven][b-proven]][u-proven] |
+| **Repository Governance** | [![boneyard][b-boneyard]][u-boneyard] |
+
+[b-studio]: https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield
+[u-home]: https://studio2201.com
+[b-snip]: https://img.shields.io/badge/snip-0%20secrets-2f6f5e?logo=shield
+[u-snip]: https://studio2201.com/snip
+[b-vigil]: https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e?logo=shield
+[u-vigil]: https://studio2201.com/vigil
+[b-aegis]: https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e?logo=shield
+[u-aegis]: https://studio2201.com/aegis
+[b-proven]: https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e?logo=shield
+[u-proven]: https://studio2201.com/proven
+[b-boneyard]: https://img.shields.io/badge/boneyard-maintained-2f6f5e?logo=shield
+[u-boneyard]: https://studio2201.com/boneyard
+
+</div>
 ```
 
 ### 5 Dedicated Dynamic Workflow Status Badges (1 Per App)
@@ -106,13 +126,17 @@ pub fn init_project(target: &Path) -> Result<(), String> {
     }
 
     println!("\nProject initialized successfully with 5 dedicated workflows.");
-    println!("\nPrimary Anchor Badge & Executive Assurance Badges for README.md:");
-    println!("  [![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)");
-    println!("  [![snip](https://img.shields.io/badge/snip-0%20secrets-2f6f5e)](https://studio2201.com/snip)");
-    println!("  [![vigil](https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e)](https://studio2201.com/vigil)");
-    println!("  [![aegis](https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e)](https://studio2201.com/aegis)");
-    println!("  [![proven](https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e)](https://studio2201.com/proven)");
-    println!("  [![boneyard](https://img.shields.io/badge/boneyard-maintained-2f6f5e)](https://studio2201.com/boneyard)");
+    println!("\nCentered Security & Governance Scorecard for README.md (see AGENTS.md):");
+    println!("  <div align=\"center\">");
+    println!("  | Security Pillar | Verification Badge |");
+    println!("  | :--- | :---: |");
+    println!("  | **Platform Standard** | [![secured by studio2201][b-studio]][u-home] |");
+    println!("  | **Credential Defense** | [![snip][b-snip]][u-snip] |");
+    println!("  | **Supply Chain Surface** | [![vigil][b-vigil]][u-vigil] |");
+    println!("  | **Post-Quantum Cryptography** | [![aegis][b-aegis]][u-aegis] |");
+    println!("  | **Build Provenance & SLSA** | [![proven][b-proven]][u-proven] |");
+    println!("  | **Repository Governance** | [![boneyard][b-boneyard]][u-boneyard] |");
+    println!("  </div>");
     println!("\nDynamic Workflow Status Badges for README.md (replace <owner>/<repo>):");
     for tool in TOOLS {
         println!("  [![{tool}][b-{tool}]][ci-{tool}]");

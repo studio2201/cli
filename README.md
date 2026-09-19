@@ -1,33 +1,33 @@
 # studio2201 CLI
 
-[![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)
-[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Version](https://img.shields.io/badge/version-v0.1.11-blue.svg)](https://github.com/studio2201/cli/releases)
+<div align="center">
+
+[![Version](https://img.shields.io/badge/version-v0.1.12-blue.svg)](https://github.com/studio2201/cli/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-<details>
-<summary><b>Executive Assurance Scorecard</b> (EO 14028 · NIST SP 800-218 · OMB M-26-15)</summary>
+| Security Pillar | Verification Badge |
+| :--- | :---: |
+| **Platform Standard** | [![secured by studio2201][b-studio]][u-home] |
+| **Credential Defense** | [![snip][b-snip]][u-snip] |
+| **Supply Chain Surface** | [![vigil][b-vigil]][u-vigil] |
+| **Post-Quantum Cryptography** | [![aegis][b-aegis]][u-aegis] |
+| **Build Provenance & SLSA** | [![proven][b-proven]][u-proven] |
+| **Repository Governance** | [![boneyard][b-boneyard]][u-boneyard] |
 
-| Tool | Mandate / Standard | Assurance Metric | Status |
-| :--- | :--- | :--- | :---: |
-| [**Snip**][u-snip] | EO 14028 §4 (Credential Defense) | `0 secrets` | [![snip][m-snip]][u-snip] |
-| [**Vigil**][u-vigil] | NIST SP 800-218 (Supply Surface) | `0 dependencies` | [![vigil][m-vigil]][u-vigil] |
-| [**Aegis**][u-aegis] | OMB M-26-15 (Post-Quantum Crypto) | `PQC compliant` | [![aegis][m-aegis]][u-aegis] |
-| [**Proven**][u-proven] | NIST FIPS 204 (SLSA Level 3+) | `ML-DSA-65 verified` | [![proven][m-proven]][u-proven] |
-| [**Boneyard**][u-boneyard] | Asset Ownership (Zombie Defense) | `maintained` | [![boneyard][m-boneyard]][u-boneyard] |
-
+[b-studio]: https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield
+[u-home]: https://studio2201.com
+[b-snip]: https://img.shields.io/badge/snip-0%20secrets-2f6f5e?logo=shield
 [u-snip]: https://studio2201.com/snip
+[b-vigil]: https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e?logo=shield
 [u-vigil]: https://studio2201.com/vigil
+[b-aegis]: https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e?logo=shield
 [u-aegis]: https://studio2201.com/aegis
+[b-proven]: https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e?logo=shield
 [u-proven]: https://studio2201.com/proven
+[b-boneyard]: https://img.shields.io/badge/boneyard-maintained-2f6f5e?logo=shield
 [u-boneyard]: https://studio2201.com/boneyard
-[m-snip]: https://img.shields.io/badge/snip-0%20secrets-2f6f5e
-[m-vigil]: https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e
-[m-aegis]: https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e
-[m-proven]: https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e
-[m-boneyard]: https://img.shields.io/badge/boneyard-maintained-2f6f5e
 
-</details>
+</div>
 
 The unified command-line interface and toolchain manager for the **studio2201** security and governance ecosystem.
 

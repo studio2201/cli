@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.12] — 2026-09-19
+
+### Added
+- Standardized centered 2-column Security & Governance Scorecard table `<div align="center">` in `AGENTS.md` and CLI init output.
+- Replaced horizontal badge wrap with clean centered table presentation.
+
 ## [0.1.11] — 2026-09-19
 
 ### Added

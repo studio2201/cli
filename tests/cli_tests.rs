@@ -59,7 +59,8 @@ fn test_init_scaffolding() {
     assert!(agent_md.is_file());
     let agent_content = fs::read_to_string(&agent_md).unwrap();
     assert!(agent_content.contains("studio2201 check"));
-    assert!(agent_content.contains("Primary Anchor Badge & Executive Assurance Scorecard"));
+    assert!(agent_content.contains("Centered Security & Governance Scorecard"));
+    assert!(agent_content.contains("<div align=\"center\">"));
     assert!(agent_content.contains("secured by studio2201"));
     assert!(agent_content.contains("snip-0%20secrets-2f6f5e"));
     assert!(agent_content.contains("vigil-0%20dependencies-2f6f5e"));
