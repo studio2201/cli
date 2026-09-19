@@ -1,57 +1,45 @@
-//! init.rs — Scaffolds GitHub Actions workflow and AI Agent guardrails
+//! init.rs — Scaffolds GitHub Actions workflows and AI Agent guardrails
 use std::fs;
 use std::path::Path;
 
-const WORKFLOW_YAML: &str = r#"name: studio2201 Security Gate
+const TOOLS: &[&str] = &["snip", "vigil", "aegis", "proven", "boneyard"];
+
+fn workflow_yaml(tool: &str) -> String {
+    format!(
+r#"name: {tool}
 on:
-  push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+  push: {{ branches: [ master, main ] }}
+  pull_request: {{ branches: [ master, main ] }}
   workflow_dispatch:
-
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
-permissions:
-  contents: read
-
+  group: ${{{{ github.workflow }}}}-${{{{ github.ref }}}}
+  cancel-in-progress: ${{{{ github.event_name == 'pull_request' }}}}
+permissions: {{ contents: read }}
 jobs:
-  security-gate:
-    name: studio2201 Security Gate
+  {tool}:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run studio2201 Security Gate
-        uses: studio2201/studio2201@v1
-        with:
-          tools: 'snip,vigil,aegis'
-          fail-on: 'block'
-
-      - name: Retain Audit Findings
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
+        with: {{ fetch-depth: 0 }}
+      - uses: studio2201/studio2201@v1
+        with: {{ tools: '{tool}', fail-on: 'block' }}
+      - uses: actions/upload-artifact@v4
         if: always()
-        with:
-          name: studio2201-audit-findings
-          path: |
-            *_report.md
-          if-no-files-found: ignore
-"#;
+        with: {{ name: {tool}-report, path: {tool}_report.md, if-no-files-found: ignore }}
+"#
+    )
+}
 
 const AGENTS_MD: &str = r#"# AI Agent Security Guardrails — studio2201
 
-This repository enforces automated security, supply-chain, and governance policies.
+This repository enforces automated security, supply-chain, and governance policies
+via 5 dedicated GitHub Actions workflows and dynamic Shields.io workflow status badges.
 
 ## Pre-Commit Verification Instructions for AI Agents
 Before submitting code changes, pull requests, or commits:
 1. Run `studio2201 check` to audit all modified diffs, dependencies, and crypto.
 2. If **Snip** reports `BLOCK`:
-   - Strip any hardcoded API keys, tokens, or unhandled CORS headers.
+   - Strip hardcoded API keys, tokens, or unhandled CORS headers.
    - Ensure Postgres migrations include `ALTER TABLE <table> ENABLE ROW LEVEL SECURITY;`.
 3. If **Vigil** reports `DORMANT`:
    - Replace dependencies older than policy threshold with active alternatives.
@@ -61,70 +49,57 @@ Before submitting code changes, pull requests, or commits:
 
 ## Repository README Verification Badges
 
-### Option 1 (Minimalist): Dynamic Workflow Status Badge (Recommended)
-Embed this dynamic live status badge into your `README.md` header:
+### 5 Dedicated Dynamic Workflow Status Badges (1 Per App)
+Embed dynamic Shields.io status badges in your `README.md` (replace `<owner>/<repo>`):
 ```markdown
-[![studio2201][badge]][ci]
+[![snip][b-snip]][ci-snip]
+[![vigil][b-vigil]][ci-vigil]
+[![aegis][b-aegis]][ci-aegis]
+[![proven][b-proven]][ci-proven]
+[![boneyard][b-boneyard]][ci-boneyard]
 
-[badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield
-[ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
-```
-
-### Option 2 (Detailed): Collapsible Governance Scorecard (Standard)
-Embed this standardized expandable scorecard in your README for comprehensive per-tool verification:
-```markdown
-<details>
-<summary><a href="https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml">
-<img src="https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield" alt="studio2201">
-</a> <b>Detailed Governance Scorecard</b></summary>
-
-| Tool | Focus | Status | Badge |
-| :--- | :--- | :---: | :---: |
-| Snip | Vibe-Code | Pass | [![Vibe-Safe](https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg)](https://studio2201.com/snip) |
-| Vigil | Dormancy | Pass | [![Dormancy](https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg)](https://studio2201.com/vigil) |
-| Aegis | PQC Migration | Pass | [![PQC](https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg)](https://studio2201.com/aegis) |
-| Proven | SLSA L3+ | Pass | [![SLSA](https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg)](https://studio2201.com/proven) |
-| Boneyard | Debt Radar | Pass | [![Boneyard](https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg)](https://studio2201.com/boneyard) |
-
-</details>
+[b-snip]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/snip.yml?label=snip&logo=shield
+[ci-snip]: https://github.com/<owner>/<repo>/actions/workflows/snip.yml
+[b-vigil]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/vigil.yml?label=vigil&logo=shield
+[ci-vigil]: https://github.com/<owner>/<repo>/actions/workflows/vigil.yml
+[b-aegis]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/aegis.yml?label=aegis&logo=shield
+[ci-aegis]: https://github.com/<owner>/<repo>/actions/workflows/aegis.yml
+[b-proven]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/proven.yml?label=proven&logo=shield
+[ci-proven]: https://github.com/<owner>/<repo>/actions/workflows/proven.yml
+[b-boneyard]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/boneyard.yml?label=boneyard&logo=shield
+[ci-boneyard]: https://github.com/<owner>/<repo>/actions/workflows/boneyard.yml
 ```
 "#;
 
 pub fn init_project(target: &Path) -> Result<(), String> {
     let wf_dir = target.join(".github").join("workflows");
-    fs::create_dir_all(&wf_dir).map_err(|e| format!("Failed to create .github/workflows: {}", e))?;
+    fs::create_dir_all(&wf_dir).map_err(|e| format!("Failed to create workflows dir: {e}"))?;
 
-    let wf_file = wf_dir.join("studio2201.yml");
-    if !wf_file.exists() {
-        fs::write(&wf_file, WORKFLOW_YAML).map_err(|e| format!("Failed writing workflow file: {}", e))?;
-        println!("  ✓ Created GitHub Actions workflow: {}", wf_file.display());
-    } else {
-        println!("  - Workflow file already exists: {}", wf_file.display());
+    for tool in TOOLS {
+        let wf_file = wf_dir.join(format!("{tool}.yml"));
+        if !wf_file.exists() {
+            fs::write(&wf_file, workflow_yaml(tool))
+                .map_err(|e| format!("Failed writing {tool}.yml: {e}"))?;
+            println!("  ✓ Created workflow: {}", wf_file.display());
+        } else {
+            println!("  - Workflow already exists: {}", wf_file.display());
+        }
     }
 
     let agent_file = target.join("AGENTS.md");
     if !agent_file.exists() {
-        fs::write(&agent_file, AGENTS_MD).map_err(|e| format!("Failed writing AGENTS.md: {}", e))?;
+        fs::write(&agent_file, AGENTS_MD).map_err(|e| format!("Failed writing AGENTS.md: {e}"))?;
         println!("  ✓ Created agent instructions: {}", agent_file.display());
     } else {
         println!("  - Agent instructions already exist: {}", agent_file.display());
     }
 
-    println!("\nProject initialized successfully for studio2201.");
-    println!("\nChoose a README badge presentation style (see AGENTS.md):");
-    println!("  Option 1 (Dynamic Workflow Status Badge):");
-    println!("    [![studio2201][badge]][ci]");
-    println!("    [badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield");
-    println!("    [ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml");
-    println!("\n  Option 2 (Detailed Collapsible Scorecard):");
-    println!("    <details>");
-    println!("    <summary>");
-    println!("      <a href=\"https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml\">");
-    println!("        <img src=\"https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield\"");
-    println!("          alt=\"studio2201\">");
-    println!("      </a>");
-    println!("    </summary>");
-    println!("    (Detailed per-tool scorecard table in AGENTS.md)");
-    println!("    </details>");
+    println!("\nProject initialized successfully with 5 dedicated workflows.");
+    println!("\nDynamic Workflow Status Badges for README.md (replace <owner>/<repo>):");
+    for tool in TOOLS {
+        println!("  [![{tool}][b-{tool}]][ci-{tool}]");
+        println!("  [b-{tool}]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/{tool}.yml?label={tool}&logo=shield");
+        println!("  [ci-{tool}]: https://github.com/<owner>/<repo>/actions/workflows/{tool}.yml");
+    }
     Ok(())
 }

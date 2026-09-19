@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.10] — 2026-09-19
+
+### Added
+- Scaffolding for all 5 dedicated workflows (`snip.yml`, `vigil.yml`, `aegis.yml`, `proven.yml`, `boneyard.yml`).
+- 5 dynamic Shields.io workflow status badges (one per app) embedded in `AGENTS.md` and CLI init output.
+
 ## [0.1.9] — 2026-09-19
 
 ### Fixed

@@ -45,18 +45,24 @@ fn test_init_scaffolding() {
     let res = init::init_project(&tmp);
     assert!(res.is_ok());
 
-    let wf = tmp.join(".github").join("workflows").join("studio2201.yml");
-    assert!(wf.is_file());
-    let content = fs::read_to_string(&wf).unwrap();
-    assert!(content.contains("uses: studio2201/studio2201@v1"));
+    let tools = ["snip", "vigil", "aegis", "proven", "boneyard"];
+    for tool in tools {
+        let wf = tmp.join(".github").join("workflows").join(format!("{tool}.yml"));
+        assert!(wf.is_file(), "Workflow {tool}.yml should exist");
+        let content = fs::read_to_string(&wf).unwrap();
+        assert!(content.contains(&format!("name: {tool}")));
+        assert!(content.contains("uses: studio2201/studio2201@v1"));
+        assert!(content.contains(&format!("tools: '{tool}'")));
+    }
 
     let agent_md = tmp.join("AGENTS.md");
     assert!(agent_md.is_file());
     let agent_content = fs::read_to_string(&agent_md).unwrap();
     assert!(agent_content.contains("studio2201 check"));
-    assert!(agent_content.contains("Option 1 (Minimalist): Dynamic Workflow Status Badge"));
-    assert!(agent_content.contains("Option 2 (Detailed): Collapsible Governance Scorecard"));
-    assert!(agent_content.contains("actions/workflows/studio2201.yml"));
+    assert!(agent_content.contains("5 Dedicated Dynamic Workflow Status Badges"));
+    for tool in tools {
+        assert!(agent_content.contains(&format!("[b-{tool}]:")));
+    }
 
     let _ = fs::remove_dir_all(&tmp);
 }
@@ -67,7 +73,7 @@ fn test_init_idempotent_existing_files() {
     let _ = fs::remove_dir_all(&tmp);
     fs::create_dir_all(tmp.join(".github").join("workflows")).unwrap();
 
-    let wf = tmp.join(".github").join("workflows").join("studio2201.yml");
+    let wf = tmp.join(".github").join("workflows").join("snip.yml");
     fs::write(&wf, "# Pre-existing custom workflow").unwrap();
     let agent_md = tmp.join("AGENTS.md");
     fs::write(&agent_md, "# Pre-existing custom instructions").unwrap();
