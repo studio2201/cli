@@ -48,15 +48,15 @@ fn test_init_scaffolding() {
     let wf = tmp.join(".github").join("workflows").join("studio2201.yml");
     assert!(wf.is_file());
     let content = fs::read_to_string(&wf).unwrap();
-    assert!(content.contains("uses: studio2201/studio2201@master"));
+    assert!(content.contains("uses: studio2201/studio2201@v1"));
 
     let agent_md = tmp.join("AGENTS.md");
     assert!(agent_md.is_file());
     let agent_content = fs::read_to_string(&agent_md).unwrap();
     assert!(agent_content.contains("studio2201 check"));
-    assert!(agent_content.contains("Option 1 (Minimalist): Single Suite Badge"));
+    assert!(agent_content.contains("Option 1 (Minimalist): Dynamic Workflow Status Badge"));
     assert!(agent_content.contains("Option 2 (Detailed): Collapsible Governance Scorecard"));
-    assert!(agent_content.contains("5%2F5%20Verified-2f6f5e?logo=shield"));
+    assert!(agent_content.contains("actions/workflows/studio2201.yml"));
 
     let _ = fs::remove_dir_all(&tmp);
 }

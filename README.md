@@ -1,7 +1,7 @@
 # studio2201 CLI
 
 [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Version](https://img.shields.io/badge/version-v0.1.8-blue.svg)](https://github.com/studio2201/cli/releases)
+[![Version](https://img.shields.io/badge/version-v0.1.9-blue.svg)](https://github.com/studio2201/cli/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 <details>

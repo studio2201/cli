@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.9] — 2026-09-19
+
+### Fixed
+- Updated init template to use @v1 and tools 'snip,vigil,aegis'.
+- Added dynamic Shields.io workflow status badge to AGENTS.md template.
+
 ## [0.1.8] — 2026-09-19
 
 ### Fixed

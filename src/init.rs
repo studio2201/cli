@@ -28,9 +28,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run studio2201 Security Gate
-        uses: studio2201/studio2201@master
+        uses: studio2201/studio2201@v1
         with:
-          tools: 'all'
+          tools: 'snip,vigil,aegis'
           fail-on: 'block'
 
       - name: Retain Audit Findings
@@ -61,18 +61,21 @@ Before submitting code changes, pull requests, or commits:
 
 ## Repository README Verification Badges
 
-### Option 1 (Minimalist): Single Suite Badge (Recommended)
-Embed this clean badge into your `README.md` header alongside version and license:
+### Option 1 (Minimalist): Dynamic Workflow Status Badge (Recommended)
+Embed this dynamic live status badge into your `README.md` header:
 ```markdown
-[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
+[![studio2201][badge]][ci]
+
+[badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield
+[ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml
 ```
 
 ### Option 2 (Detailed): Collapsible Governance Scorecard (Standard)
 Embed this standardized expandable scorecard in your README for comprehensive per-tool verification:
 ```markdown
 <details>
-<summary><a href="https://studio2201.com/agents#badges">
-<img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite">
+<summary><a href="https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml">
+<img src="https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield" alt="studio2201">
 </a> <b>Detailed Governance Scorecard</b></summary>
 
 | Tool | Focus | Status | Badge |
@@ -109,13 +112,16 @@ pub fn init_project(target: &Path) -> Result<(), String> {
 
     println!("\nProject initialized successfully for studio2201.");
     println!("\nChoose a README badge presentation style (see AGENTS.md):");
-    println!("  Option 1 (Minimalist Suite Badge):");
-    println!("    [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)");
+    println!("  Option 1 (Dynamic Workflow Status Badge):");
+    println!("    [![studio2201][badge]][ci]");
+    println!("    [badge]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield");
+    println!("    [ci]: https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml");
     println!("\n  Option 2 (Detailed Collapsible Scorecard):");
     println!("    <details>");
     println!("    <summary>");
-    println!("      <a href=\"https://studio2201.com/agents#badges\">");
-    println!("        <img src=\"https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield\" alt=\"studio2201 Suite\">");
+    println!("      <a href=\"https://github.com/<owner>/<repo>/actions/workflows/studio2201.yml\">");
+    println!("        <img src=\"https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/studio2201.yml?branch=master&label=studio2201&logo=shield\"");
+    println!("          alt=\"studio2201\">");
     println!("      </a>");
     println!("    </summary>");
     println!("    (Detailed per-tool scorecard table in AGENTS.md)");
