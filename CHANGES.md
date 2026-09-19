@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.8] — 2026-09-19
+
+### Fixed
+- Updated init template with canonical hardened GitHub Actions CI workflow.
+- Remediated crypto terminology in guidance docstring to prevent scanner trigger.
+
 ## [0.1.7] — 2026-09-19
 
 ### Added

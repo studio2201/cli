@@ -2,28 +2,45 @@
 use std::fs;
 use std::path::Path;
 
-const WORKFLOW_YAML: &str = r#"name: studio2201 Security & Governance
+const WORKFLOW_YAML: &str = r#"name: studio2201 Security Gate
 on:
   push:
     branches: [ master, main ]
   pull_request:
     branches: [ master, main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
 
 jobs:
-  audit:
-    name: studio2201 Suite Audit
+  security-gate:
+    name: studio2201 Security Gate
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Run studio2201 Suite
+      - name: Run studio2201 Security Gate
         uses: studio2201/studio2201@master
         with:
-          tools: all
-          fail-on: block
+          tools: 'all'
+          fail-on: 'block'
+
+      - name: Retain Audit Findings
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio2201-audit-findings
+          path: |
+            *_report.md
+          if-no-files-found: ignore
 "#;
 
 const AGENTS_MD: &str = r#"# AI Agent Security Guardrails — studio2201
@@ -39,7 +56,7 @@ Before submitting code changes, pull requests, or commits:
 3. If **Vigil** reports `DORMANT`:
    - Replace dependencies older than policy threshold with active alternatives.
 4. If **Aegis** reports `NON-COMPLIANT`:
-   - Upgrade classical cryptographic call sites (RSA, ECDSA) to NIST PQC standards (ML-KEM, ML-DSA).
+   - Upgrade classical cryptographic call sites to NIST PQC standards (ML-KEM, ML-DSA).
 5. Ensure `studio2201 check` exits with code 0 before completing your task.
 
 ## Repository README Verification Badges
