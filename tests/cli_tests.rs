@@ -59,6 +59,13 @@ fn test_init_scaffolding() {
     assert!(agent_md.is_file());
     let agent_content = fs::read_to_string(&agent_md).unwrap();
     assert!(agent_content.contains("studio2201 check"));
+    assert!(agent_content.contains("Primary Anchor Badge & Executive Assurance Scorecard"));
+    assert!(agent_content.contains("secured by studio2201"));
+    assert!(agent_content.contains("snip-0%20secrets-2f6f5e"));
+    assert!(agent_content.contains("vigil-0%20dependencies-2f6f5e"));
+    assert!(agent_content.contains("aegis-PQC%20compliant-2f6f5e"));
+    assert!(agent_content.contains("proven-ML--DSA--65%20verified-2f6f5e"));
+    assert!(agent_content.contains("boneyard-maintained-2f6f5e"));
     assert!(agent_content.contains("5 Dedicated Dynamic Workflow Status Badges"));
     for tool in tools {
         assert!(agent_content.contains(&format!("[b-{tool}]:")));

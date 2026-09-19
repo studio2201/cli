@@ -1,34 +1,31 @@
 # studio2201 CLI
 
+[![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)
 [![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
-[![Version](https://img.shields.io/badge/version-v0.1.10-blue.svg)](https://github.com/studio2201/cli/releases)
+[![Version](https://img.shields.io/badge/version-v0.1.11-blue.svg)](https://github.com/studio2201/cli/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 <details>
-<summary>
-  <a href="https://studio2201.com/agents#badges">
-    <img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite">
-  </a> <b>Detailed Governance Scorecard</b>
-</summary>
+<summary><b>Executive Assurance Scorecard</b> (EO 14028 · NIST SP 800-218 · OMB M-26-15)</summary>
 
-| Tool | Focus | Verdict | Status Badge |
-| :--- | :--- | :---: | :---: |
-| [**Snip**][u-snip] | Vibe-Code & Secrets Gate | `SHIP` | [![Vibe-Safe][b-snip]][u-snip] |
-| [**Vigil**][u-vigil] | Supply-Chain Dormancy | `HEALTHY` | [![Dormancy][b-vigil]][u-vigil] |
-| [**Aegis**][u-aegis] | PQC & Post-Quantum Scans | `QUANTUM-SAFE` | [![PQC][b-aegis]][u-aegis] |
-| [**Proven**][u-proven] | ML-DSA-65 Attestation | `VERIFIED` | [![SLSA][b-proven]][u-proven] |
-| [**Boneyard**][u-boneyard] | Tech-Debt Radar | `0/100 DEBT` | [![Boneyard][b-boneyard]][u-boneyard] |
+| Tool | Mandate / Standard | Assurance Metric | Status |
+| :--- | :--- | :--- | :---: |
+| [**Snip**][u-snip] | EO 14028 §4 (Credential Defense) | `0 secrets` | [![snip][m-snip]][u-snip] |
+| [**Vigil**][u-vigil] | NIST SP 800-218 (Supply Surface) | `0 dependencies` | [![vigil][m-vigil]][u-vigil] |
+| [**Aegis**][u-aegis] | OMB M-26-15 (Post-Quantum Crypto) | `PQC compliant` | [![aegis][m-aegis]][u-aegis] |
+| [**Proven**][u-proven] | NIST FIPS 204 (SLSA Level 3+) | `ML-DSA-65 verified` | [![proven][m-proven]][u-proven] |
+| [**Boneyard**][u-boneyard] | Asset Ownership (Zombie Defense) | `maintained` | [![boneyard][m-boneyard]][u-boneyard] |
 
 [u-snip]: https://studio2201.com/snip
 [u-vigil]: https://studio2201.com/vigil
 [u-aegis]: https://studio2201.com/aegis
 [u-proven]: https://studio2201.com/proven
 [u-boneyard]: https://studio2201.com/boneyard
-[b-snip]: https://img.shields.io/badge/vibe--safe-SHIP-brightgreen.svg
-[b-vigil]: https://img.shields.io/badge/dormancy-healthy-2f6f5e.svg
-[b-aegis]: https://img.shields.io/badge/PQC-Quantum--Safe-blueviolet.svg
-[b-proven]: https://img.shields.io/badge/SLSA-Level%203%2B-blue.svg
-[b-boneyard]: https://img.shields.io/badge/boneyard%20index-0%2F100-brightgreen.svg
+[m-snip]: https://img.shields.io/badge/snip-0%20secrets-2f6f5e
+[m-vigil]: https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e
+[m-aegis]: https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e
+[m-proven]: https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e
+[m-boneyard]: https://img.shields.io/badge/boneyard-maintained-2f6f5e
 
 </details>
 

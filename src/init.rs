@@ -49,6 +49,17 @@ Before submitting code changes, pull requests, or commits:
 
 ## Repository README Verification Badges
 
+### Primary Anchor Badge & Executive Assurance Scorecard
+Embed the anchor badge and 5 executive metric badges in your `README.md`:
+```markdown
+[![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)
+[![snip](https://img.shields.io/badge/snip-0%20secrets-2f6f5e)](https://studio2201.com/snip)
+[![vigil](https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e)](https://studio2201.com/vigil)
+[![aegis](https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e)](https://studio2201.com/aegis)
+[![proven](https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e)](https://studio2201.com/proven)
+[![boneyard](https://img.shields.io/badge/boneyard-maintained-2f6f5e)](https://studio2201.com/boneyard)
+```
+
 ### 5 Dedicated Dynamic Workflow Status Badges (1 Per App)
 Embed dynamic Shields.io status badges in your `README.md` (replace `<owner>/<repo>`):
 ```markdown
@@ -95,6 +106,13 @@ pub fn init_project(target: &Path) -> Result<(), String> {
     }
 
     println!("\nProject initialized successfully with 5 dedicated workflows.");
+    println!("\nPrimary Anchor Badge & Executive Assurance Badges for README.md:");
+    println!("  [![secured by studio2201](https://img.shields.io/badge/secured%20by-studio2201-2f6f5e?logo=shield)](https://studio2201.com)");
+    println!("  [![snip](https://img.shields.io/badge/snip-0%20secrets-2f6f5e)](https://studio2201.com/snip)");
+    println!("  [![vigil](https://img.shields.io/badge/vigil-0%20dependencies-2f6f5e)](https://studio2201.com/vigil)");
+    println!("  [![aegis](https://img.shields.io/badge/aegis-PQC%20compliant-2f6f5e)](https://studio2201.com/aegis)");
+    println!("  [![proven](https://img.shields.io/badge/proven-ML--DSA--65%20verified-2f6f5e)](https://studio2201.com/proven)");
+    println!("  [![boneyard](https://img.shields.io/badge/boneyard-maintained-2f6f5e)](https://studio2201.com/boneyard)");
     println!("\nDynamic Workflow Status Badges for README.md (replace <owner>/<repo>):");
     for tool in TOOLS {
         println!("  [![{tool}][b-{tool}]][ci-{tool}]");

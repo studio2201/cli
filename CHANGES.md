@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.11] — 2026-09-19
+
+### Added
+- Anchor badge (`secured by studio2201`) and 5 executive assurance metric badges embedded in `AGENTS.md` template and CLI init terminal output.
+- Canonical 23-line Executive Assurance Scorecard integrated into CLI documentation.
+
 ## [0.1.10] — 2026-09-19
 
 ### Added
