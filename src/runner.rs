@@ -125,23 +125,27 @@ fn run_aegis(target: &Path) -> ToolResult {
 }
 
 fn run_proven(target: &Path) -> ToolResult {
+    let rel = target.join("target").join("release");
+    let art = std::fs::read_dir(&rel).ok().and_then(|mut r| {
+        r.find_map(|e| e.ok().map(|e| e.path()).filter(|p| p.is_file() && p.extension().is_none()))
+    });
+    let art_path = match art {
+        Some(p) => p,
+        None => return ToolResult {
+            tool: "proven".into(), target: target.display().to_string(),
+            verdict: "SKIPPED".into(), exit_code: 0, passed: true,
+            output: "No binary in target/release to attest (skipped)".into(),
+        },
+    };
     let mut cmd = Command::new(xdg::tool_path("proven"));
-    cmd.args(["doctor"]);
+    cmd.args(["attest", art_path.to_str().unwrap_or("")]);
     let (ec, out_str) = match cmd.output() {
         Ok(out) => (out.status.code().unwrap_or(1), String::from_utf8_lossy(&out.stdout).to_string()),
         Err(e) => (1, format!("Failed to run proven: {}", e)),
     };
-
     let passed = ec == 0;
     let verdict = if passed { "VERIFIED".to_string() } else { "TAMPERED".to_string() };
-    ToolResult {
-        tool: "proven".into(),
-        target: target.display().to_string(),
-        verdict,
-        exit_code: ec,
-        passed,
-        output: out_str,
-    }
+    ToolResult { tool: "proven".into(), target: target.display().to_string(), verdict, exit_code: ec, passed, output: out_str }
 }
 
 fn run_boneyard(target: &Path) -> ToolResult {

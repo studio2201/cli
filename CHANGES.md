@@ -4,6 +4,11 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.4] — 2026-09-19
+
+### Fixed
+- Fixed `run_proven` in `runner.rs` to detect release artifacts and attest with ML-DSA-65 or skip gracefully when none found.
+
 ## [0.1.1] — 2026-09-19
 
 ### Fixed
