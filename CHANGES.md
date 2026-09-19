@@ -4,6 +4,11 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.7] — 2026-09-19
+
+### Added
+- Added automated two-stage multi-platform GitHub Release workflow (`release.yml`).
+
 ## [0.1.6] — 2026-09-19
 
 ### Fixed
