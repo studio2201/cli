@@ -3,7 +3,7 @@ use std::env;
 use std::path::PathBuf;
 use std::process::{exit, Command};
 
-pub const VERSION: &str = "0.1.5";
+pub const VERSION: &str = "0.1.6";
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum Action {

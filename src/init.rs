@@ -54,7 +54,9 @@ Embed this clean badge into your `README.md` header alongside version and licens
 Embed this standardized expandable scorecard in your README for comprehensive per-tool verification:
 ```markdown
 <details>
-<summary><a href="https://studio2201.com/agents#badges"><img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite"></a> <b>Detailed Governance Scorecard</b></summary>
+<summary><a href="https://studio2201.com/agents#badges">
+<img src="https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield" alt="studio2201 Suite">
+</a> <b>Detailed Governance Scorecard</b></summary>
 
 | Tool | Focus | Status | Badge |
 | :--- | :--- | :---: | :---: |
