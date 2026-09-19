@@ -4,6 +4,12 @@ All notable changes to the studio2201 unified CLI are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) 1.1.0.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.13] — 2026-09-19
+ 
+### Changed
+- Purged all dynamic badge alternatives from `AGENTS.md` and `studio2201 init` output.
+- Standardized solely on the canonical Centered Scorecard table to eliminate LLM ambiguity.
+ 
 ## [0.1.12] — 2026-09-19
 
 ### Added

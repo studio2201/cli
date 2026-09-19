@@ -67,7 +67,6 @@ fn test_init_scaffolding() {
     assert!(agent_content.contains("aegis-PQC%20compliant-2f6f5e"));
     assert!(agent_content.contains("proven-ML--DSA--65%20verified-2f6f5e"));
     assert!(agent_content.contains("boneyard-maintained-2f6f5e"));
-    assert!(agent_content.contains("5 Dedicated Dynamic Workflow Status Badges"));
     for tool in tools {
         assert!(agent_content.contains(&format!("[b-{tool}]:")));
     }

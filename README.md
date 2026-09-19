@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-v0.1.12-blue.svg)](https://github.com/studio2201/cli/releases)
+[![Version](https://img.shields.io/badge/version-v0.1.13-blue.svg)](https://github.com/studio2201/cli/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 | Security Pillar | Verification Badge |

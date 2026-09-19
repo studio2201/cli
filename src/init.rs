@@ -33,7 +33,7 @@ jobs:
 const AGENTS_MD: &str = r#"# AI Agent Security Guardrails — studio2201
 
 This repository enforces automated security, supply-chain, and governance policies
-via 5 dedicated GitHub Actions workflows and dynamic Shields.io workflow status badges.
+via 5 dedicated GitHub Actions workflows and a standardized repository governance scorecard.
 
 ## Pre-Commit Verification Instructions for AI Agents
 Before submitting code changes, pull requests, or commits:
@@ -49,8 +49,8 @@ Before submitting code changes, pull requests, or commits:
 
 ## Repository README Verification Badges
 
-### Centered Security & Governance Scorecard (Recommended)
-Embed this clean, centered scorecard table in your `README.md` to prevent badge clutter:
+### Centered Security & Governance Scorecard
+Embed this clean, centered scorecard table in your `README.md`:
 
 ```markdown
 <div align="center">
@@ -78,27 +78,6 @@ Embed this clean, centered scorecard table in your `README.md` to prevent badge 
 [u-boneyard]: https://studio2201.com/boneyard
 
 </div>
-```
-
-### 5 Dedicated Dynamic Workflow Status Badges (1 Per App)
-Embed dynamic Shields.io status badges in your `README.md` (replace `<owner>/<repo>`):
-```markdown
-[![snip][b-snip]][ci-snip]
-[![vigil][b-vigil]][ci-vigil]
-[![aegis][b-aegis]][ci-aegis]
-[![proven][b-proven]][ci-proven]
-[![boneyard][b-boneyard]][ci-boneyard]
-
-[b-snip]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/snip.yml?label=snip&logo=shield
-[ci-snip]: https://github.com/<owner>/<repo>/actions/workflows/snip.yml
-[b-vigil]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/vigil.yml?label=vigil&logo=shield
-[ci-vigil]: https://github.com/<owner>/<repo>/actions/workflows/vigil.yml
-[b-aegis]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/aegis.yml?label=aegis&logo=shield
-[ci-aegis]: https://github.com/<owner>/<repo>/actions/workflows/aegis.yml
-[b-proven]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/proven.yml?label=proven&logo=shield
-[ci-proven]: https://github.com/<owner>/<repo>/actions/workflows/proven.yml
-[b-boneyard]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/boneyard.yml?label=boneyard&logo=shield
-[ci-boneyard]: https://github.com/<owner>/<repo>/actions/workflows/boneyard.yml
 ```
 "#;
 
@@ -137,11 +116,5 @@ pub fn init_project(target: &Path) -> Result<(), String> {
     println!("  | **Build Provenance & SLSA** | [![proven][b-proven]][u-proven] |");
     println!("  | **Repository Governance** | [![boneyard][b-boneyard]][u-boneyard] |");
     println!("  </div>");
-    println!("\nDynamic Workflow Status Badges for README.md (replace <owner>/<repo>):");
-    for tool in TOOLS {
-        println!("  [![{tool}][b-{tool}]][ci-{tool}]");
-        println!("  [b-{tool}]: https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/{tool}.yml?label={tool}&logo=shield");
-        println!("  [ci-{tool}]: https://github.com/<owner>/<repo>/actions/workflows/{tool}.yml");
-    }
     Ok(())
 }
