@@ -54,6 +54,9 @@ fn test_init_scaffolding() {
     assert!(agent_md.is_file());
     let agent_content = fs::read_to_string(&agent_md).unwrap();
     assert!(agent_content.contains("studio2201 check"));
+    assert!(agent_content.contains("Option 1 (Minimalist): Single Suite Badge"));
+    assert!(agent_content.contains("Option 2 (Detailed): Collapsible Governance Scorecard"));
+    assert!(agent_content.contains("5%2F5%20Verified-2f6f5e?logo=shield"));
 
     let _ = fs::remove_dir_all(&tmp);
 }

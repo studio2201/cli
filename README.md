@@ -1,9 +1,8 @@
 # studio2201 CLI
 
-[![Version](https://img.shields.io/badge/version-v0.1.1-blue.svg)](https://github.com/studio2201/cli/releases)
-[![Pure std::](https://img.shields.io/badge/pure-std%3A%3A-success.svg)](https://studio2201.com)
+[![studio2201 Suite](https://img.shields.io/badge/studio2201-5%2F5%20Verified-2f6f5e?logo=shield)](https://studio2201.com/agents#badges)
+[![Version](https://img.shields.io/badge/version-v0.1.2-blue.svg)](https://github.com/studio2201/cli/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Max LOC](https://img.shields.io/badge/max%20LOC-%E2%89%A4256-brightgreen.svg)](https://studio2201.com)
 
 The unified command-line interface and toolchain manager for the **studio2201** security and governance ecosystem.
 
