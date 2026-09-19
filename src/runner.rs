@@ -145,8 +145,21 @@ fn run_proven(target: &Path) -> ToolResult {
 }
 
 fn run_boneyard(target: &Path) -> ToolResult {
+    let halls = ["hall.json", "catalog.json"];
+    let hall_path = match halls.iter().map(|h| target.join(h)).find(|p| p.exists()) {
+        Some(p) => p,
+        None => return ToolResult {
+            tool: "boneyard".into(),
+            target: target.display().to_string(),
+            verdict: "SKIPPED".into(),
+            exit_code: 0,
+            passed: true,
+            output: "No hall.json or catalog.json found".into(),
+        },
+    };
+
     let mut cmd = Command::new(xdg::tool_path("boneyard"));
-    cmd.args(["scan", target.to_str().unwrap_or(".")]);
+    cmd.args(["scan", hall_path.to_str().unwrap_or(".")]);
     let (ec, out_str) = match cmd.output() {
         Ok(out) => (out.status.code().unwrap_or(1), String::from_utf8_lossy(&out.stdout).to_string()),
         Err(e) => (1, format!("Failed to run boneyard: {}", e)),
@@ -156,7 +169,7 @@ fn run_boneyard(target: &Path) -> ToolResult {
     let verdict = if passed { "HEALTHY".to_string() } else { "DEBT BREACH".to_string() };
     ToolResult {
         tool: "boneyard".into(),
-        target: target.display().to_string(),
+        target: hall_path.display().to_string(),
         verdict,
         exit_code: ec,
         passed,

@@ -1,6 +1,6 @@
 # studio2201 CLI
 
-[![Version](https://img.shields.io/badge/version-v0.1.0-blue.svg)](https://github.com/studio2201/cli/releases)
+[![Version](https://img.shields.io/badge/version-v0.1.1-blue.svg)](https://github.com/studio2201/cli/releases)
 [![Pure std::](https://img.shields.io/badge/pure-std%3A%3A-success.svg)](https://studio2201.com)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Max LOC](https://img.shields.io/badge/max%20LOC-%E2%89%A4256-brightgreen.svg)](https://studio2201.com)

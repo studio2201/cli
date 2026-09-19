@@ -78,3 +78,20 @@ fn test_tool_installed_check() {
     assert!(toolchain::check_installed("fake_tool", &tmp).is_some());
     let _ = fs::remove_dir_all(&tmp);
 }
+
+#[test]
+fn test_boneyard_graceful_skip() {
+    let tmp = std::env::temp_dir().join("test_boneyard_skip");
+    let _ = fs::remove_dir_all(&tmp);
+    fs::create_dir_all(&tmp).unwrap();
+
+    let res = studio2201_cli::runner::run_suite(
+        &["boneyard".to_string()],
+        &tmp,
+    );
+    assert!(res.is_ok());
+    assert_eq!(res.unwrap(), 0);
+
+    let _ = fs::remove_dir_all(&tmp);
+}
+

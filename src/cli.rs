@@ -3,7 +3,7 @@ use std::env;
 use std::path::PathBuf;
 use std::process::{Command, exit};
 
-pub const VERSION: &str = "0.1.0";
+pub const VERSION: &str = "0.1.1";
 
 pub enum Action {
     Install { tool: String, dest: Option<PathBuf> },
