@@ -62,6 +62,29 @@ fn test_init_scaffolding() {
 }
 
 #[test]
+fn test_init_idempotent_existing_files() {
+    let tmp = std::env::temp_dir().join("test_studio2201_init_idempotent");
+    let _ = fs::remove_dir_all(&tmp);
+    fs::create_dir_all(tmp.join(".github").join("workflows")).unwrap();
+
+    let wf = tmp.join(".github").join("workflows").join("studio2201.yml");
+    fs::write(&wf, "# Pre-existing custom workflow").unwrap();
+    let agent_md = tmp.join("AGENTS.md");
+    fs::write(&agent_md, "# Pre-existing custom instructions").unwrap();
+
+    let res = init::init_project(&tmp);
+    assert!(res.is_ok());
+
+    assert_eq!(fs::read_to_string(&wf).unwrap(), "# Pre-existing custom workflow");
+    assert_eq!(
+        fs::read_to_string(&agent_md).unwrap(),
+        "# Pre-existing custom instructions"
+    );
+
+    let _ = fs::remove_dir_all(&tmp);
+}
+
+#[test]
 fn test_tool_installed_check() {
     let tmp = std::env::temp_dir().join("test_bin_check");
     let _ = fs::remove_dir_all(&tmp);
